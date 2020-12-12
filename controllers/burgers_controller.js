@@ -19,9 +19,9 @@ router.get("/", function(req, res) {
 //Create route as structured in the Cats app
 router.post("/api/burgers", function(req, res) {
   burger.create([
-    "name", "devoured"
+    "name"
   ], [
-    req.body.name, req.body.devoured
+    req.body.name
   ], function(result) {
     res.json({ id: result.insertId });
   });
