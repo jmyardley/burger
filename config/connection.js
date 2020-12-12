@@ -1,5 +1,7 @@
+//Requirements
 var mysql = require("mysql");
 
+//Create connection (Add if for JAWS DB?)
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
