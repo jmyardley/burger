@@ -22,4 +22,4 @@ var burger = {
   },
 };
 
-module.exports = cat;
+module.exports = burger;

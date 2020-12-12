@@ -1,33 +1,29 @@
-const mysql = require("mysql");
-const express = require("express");
-const app = express();
+var express = require("express");
 
-const PORT = process.env.PORT || 8080;
-// mysql://fyfomaq3yaa1lg2x:gxn4fwjvi0ou2gc8@lmag6s0zwmcswp5w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/zacau1dtrxvo29g0
-let connection;
+var PORT = process.env.PORT || 8080;
 
-if (process.env.JAWSDB_URL) {
-    connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-    connection = mysql.createConnection({
-        host: "localhost",
-        port: 3306,
-        user: "root",
-        password: "",
-        database: "animals_db"
-    });
-} 
+var app = express();
 
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
 
-connection.connect(function(err){
-    if (err) throw err;
-    console.log("CONNECTED");
-});
+// Parse application body as JSON
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-app.get("/", function(req, res){
-    res.send("CONNECTED!");
-});
+// Set Handlebars.
+var exphbs = require("express-handlebars");
 
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Import routes and give the server access to them.
+var routes = require("./controllers/burgers_controller.js");
+
+app.use(routes);
+
+// Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
-    console.log("You've connected at http://localost:" + PORT);
+  // Log (server-side) when our server has started
+  console.log("Server listening on: http://localhost:" + PORT);
 });
