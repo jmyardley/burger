@@ -1,9 +1,11 @@
+//Requirements
 var express = require("express");
 
 var router = express.Router();
 
 var burger = require("../models/burger.js");
 
+//Get all route as structured in the Cats app
 router.get("/", function(req, res) {
   burger.all(function(data) {
     var hbsObject = {
@@ -14,6 +16,7 @@ router.get("/", function(req, res) {
   });
 });
 
+//Create route as structured in the Cats app
 router.post("/api/burgers", function(req, res) {
   burger.create([
     "name", "devoured"
@@ -24,6 +27,7 @@ router.post("/api/burgers", function(req, res) {
   });
 });
 
+//Update route as structured in the Cats app
 router.put("/api/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
@@ -40,5 +44,5 @@ router.put("/api/burgers/:id", function(req, res) {
   });
 });
 
-
+//Export
 module.exports = router;
