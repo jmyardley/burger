@@ -3,7 +3,10 @@ var mysql = require("mysql");
 
 let connection;
 
+// mysql://o1scrrvdzbzv29rz:tt22p8cb3dbrlars@b4e9xxkxnpu2v96i.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dzkhuircksry2dn9
 //Create connection (Add if for JAWS DB?)
+// let connection = mysql.createConnection("mysql://o1scrrvdzbzv29rz:tt22p8cb3dbrlars@b4e9xxkxnpu2v96i.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/dzkhuircksry2dn9");
+
 if (process.env.JAWSDB_URL) {
     connection = mysql.createConnection(process.env.JAWSDB_URL)
 } else {
@@ -16,7 +19,7 @@ if (process.env.JAWSDB_URL) {
         database: "burgers_db"
     });
 
-}
+} 
 connection.connect(function (err) {
     if (err) {
         console.error("error connecting: " + err.stack);
