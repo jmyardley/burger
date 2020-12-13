@@ -25,29 +25,6 @@ connection.connect(function (err) {
     console.log("connected as id " + connection.threadId);
 });
 
-if (process.env.JAWSDB_URL) {
-    connection.query(`
-    DROP DATABASE IF EXISTS burgers_db;
-    CREATE DATABASE burgers_db;
-    USE burgers_db;
-    
-    CREATE TABLE burgers
-    (
-        id int NOT NULL AUTO_INCREMENT,
-        name varchar(255) NOT NULL,
-        devoured BOOLEAN DEFAULT false,
-        PRIMARY KEY (id)
-    );
-    
-    INSERT INTO burgers (name) VALUES ("Big Mac");
-    INSERT INTO burgers (name) VALUES ("Whopper");
-    INSERT INTO burgers (name) VALUES ("Crunch Burger");
-    INSERT INTO burgers (name) VALUES ("Zack's Special");
-    INSERT INTO burgers (name) VALUES ("All the Way Burger");    
 
-    `, function (err) {
-        if (err) throw err;
-    });
-}
 
 module.exports = connection;
