@@ -8,6 +8,8 @@ The Burger App takes in burger names through a form and adds them to a SQL datab
 
 Contents: [Installation](#Installation)|[Usage](#Usage)|[Contribution](#Contribution)|[Test](#Test)|[License](#License)|[Contact](#Contact) 
 
+![app](/screenshot.png)
+
 ##Installation
 
  Installation instructions: 
